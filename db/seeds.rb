@@ -8,5 +8,6 @@
 
 20.times do
   Recipe.create! name: Faker::Commerce.product_name,
-                 description: Faker::Lorem.paragraphs(3, true).join("\n\n")
+                 description: Faker::Lorem.paragraphs(3, true).join("\n\n"),
+                 image: File.new("#{Rails.root}/public/images/pizza.jpg")
 end

@@ -1,2 +1,7 @@
 #recipes-index
-  = render @recipes
+  .row
+    .col-md-12
+      %h1 Recipes
+      %p= link_to 'New Recipe', new_recipe_path, class: 'btn btn-primary'
+  .row
+    = render @recipes

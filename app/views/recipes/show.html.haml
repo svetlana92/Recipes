@@ -1,2 +1,7 @@
-%h1 Recipes#show
-%p Find me in app/views/recipes/show.html.haml
+#recipe-show
+  %h1= @recipe.name
+  .row
+    .col-md-6
+      = image_tag @recipe.image.url(:medium), class: 'img-responsive'
+    .col-md-6
+      = @recipe.description
