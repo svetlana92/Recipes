@@ -56,3 +56,5 @@ gem 'faker'
 gem 'paperclip', '~> 5.0.0'
 
 gem 'kaminari'
+
+gem "font-awesome-rails"

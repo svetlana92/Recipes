@@ -1,0 +1,19 @@
+#users-index
+  .row
+    .col-md-12
+      %h1 Users
+  .row
+    .col-md-8
+      %table.table.table-hover.table-bordered
+        %tr
+          %th
+            Name
+          %th
+            Age
+          %th
+            Created at
+        - @users.each do |user|
+          %tr
+            %td= link_to user.name, user
+            %td= user.age
+            %td= user.created_at.strftime("%d/%m/%Y")

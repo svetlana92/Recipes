@@ -11,3 +11,9 @@
                  description: Faker::Lorem.paragraphs(3, true).join("\n\n"),
                  image: File.new("#{Rails.root}/public/images/pizza.jpg")
 end
+
+20.times do
+  User.create! name: Faker::Name.name,
+               email: Faker::Internet.email,
+               age: Faker::Number.between(10, 80)
+end
