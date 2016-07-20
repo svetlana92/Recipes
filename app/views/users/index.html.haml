@@ -1,19 +1,21 @@
 #users-index
   .row
     .col-md-12
-      %h1 Users
+      %h1.text-center Users
   .row
-    .col-md-8
-      %table.table.table-hover.table-bordered
-        %tr
-          %th
-            Name
-          %th
-            Age
-          %th
-            Created at
-        - @users.each do |user|
+    .col-md-8.col-md-offset-2
+      %table.table.table-hover.table-striped.table-condensed
+        %thead
           %tr
-            %td= link_to user.name, user
-            %td= user.age
-            %td= user.created_at.strftime("%d/%m/%Y")
+            %th
+              Name
+            %th
+              Age
+            %th.text-right
+              Created at
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td= link_to user.name, user
+              %td= user.age
+              %td.text-right= user.created_at.strftime("%d/%m/%Y")

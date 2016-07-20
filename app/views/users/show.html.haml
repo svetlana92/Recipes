@@ -1,2 +1,24 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+#user-show
+  .row
+    %h2= @user.name
+  .row
+    .col-md-6
+      %p
+        %strong
+          Email:
+        = @user.email
+      %p
+        %strong
+          Age:
+        = @user.age
+    .col-md-6.text-right
+      = link_to edit_user_path(@user), class: 'btn btn-primary' do
+        %i.fa.fa-pencil-square-o
+        Edit profile
+      = link_to edit_user_registration_path, class: 'btn btn-primary' do
+        %i.fa.fa-cogs
+        Change your email & password
+  .row
+    %h3
+      User's recipes:
+    = render @user.recipes

@@ -1,2 +1,6 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+#home-index
+  %h2
+    Recent recipes
+    = link_to 'show more', recipes_path, class: 'btn btn-default btn-sm'
+  .row
+    = render @last_recipes

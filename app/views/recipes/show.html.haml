@@ -1,13 +1,19 @@
 #recipe-show
-  %h1= @recipe.name
+  .row
+    .col-md-10
+      %h1= @recipe.name
+      %p
+        %strong Author:
+        %strong= link_to @recipe.user.name, user_path(@recipe.user)
+    - if current_user == @recipe.user
+      .col-md-2.text-right
+        %h1
+          = link_to edit_recipe_path(@recipe), class: 'btn btn-primary' do
+            %i.fa.fa-pencil-square-o
+            Edit
   .row
     .col-md-6
       = image_tag @recipe.image.url(:medium), class: 'img-responsive'
     .col-md-6
       %h3 Description
       = @recipe.description
-  .row
-    .col-md-6
-      = link_to recipes_path, class: 'btn btn-primary' do
-        %i.fa.fa-floppy-o
-        Back

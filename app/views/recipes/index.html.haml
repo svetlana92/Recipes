@@ -2,6 +2,9 @@
   .row
     .col-md-12
       %h1 Recipes
-      %p= link_to 'New Recipe', new_recipe_path, class: 'btn btn-primary'
+      %p
+        = link_to new_recipe_path, class: 'btn btn-primary' do
+          %i.fa.fa-plus-circle
+          New Recipe
   .row
     = render @recipes

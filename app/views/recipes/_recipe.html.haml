@@ -5,6 +5,6 @@
         = image_tag recipe.image.url(:thumb), class: 'img-responsive'
     .panel-body
       = link_to recipe do
-        %h3= truncate(recipe.name, length: 23, separator: ' ')
+        %h3= truncate(recipe.name, length: 16, separator: ' ')
       %p
         = truncate(recipe.description, length: 100, separator: ' ')

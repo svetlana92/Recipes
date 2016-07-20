@@ -57,4 +57,8 @@ gem 'paperclip', '~> 5.0.0'
 
 gem 'kaminari'
 
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+
+gem 'devise'
+
+gem 'letter_opener', group: :development
