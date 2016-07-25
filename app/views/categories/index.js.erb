@@ -1,0 +1,7 @@
+replaceSelector = '#recipes-form #categories-group-' +
+                  <%= @category_number %> +
+                  ' #category_level_' +
+                  <%= @new_level %>
+replaceElement = $(replaceSelector)
+replaceElement.nextUntil().remove()
+replaceElement.replaceWith("<%= escape_javascript(render(partial: 'categories/select', locals: { categories: @categories, category_level: @new_level })) %>")

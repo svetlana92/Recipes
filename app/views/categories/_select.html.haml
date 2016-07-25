@@ -1,0 +1,21 @@
+- parent_chain_with_siblings ||= nil
+- if parent_chain_with_siblings.present?
+  - parent_chain_with_siblings.each_with_index do |(member, siblings), index|
+    - category_level = index
+    .col-sm-2{ id: "category_level_#{category_level}" }
+      = select_tag :category_id,
+                   options_from_collection_for_select(siblings, :id, :name, member.id),
+                   prompt: 'Select one',
+                   class: 'form-control',
+                   name: nil
+- else
+  - category_level ||= 0
+  .col-sm-2{ id: "category_level_#{category_level}" }
+    - if categories.any?
+      = select_tag :category_id,
+                   options_from_collection_for_select(categories, :id, :name),
+                   prompt: 'Select one',
+                   class: 'form-control',
+                   name: nil
+  - if categories.any?
+    .col-sm-2{ id: "category_level_#{category_level + 1}" }

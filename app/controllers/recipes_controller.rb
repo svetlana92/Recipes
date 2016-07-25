@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @categories = Category.where parent: nil
   end
 
   def create
@@ -20,14 +21,23 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to @recipe
     else
+      @categories = Category.where parent: nil
       render 'new'
     end
   end
 
   def edit
+    @categories = Category.where parent: nil
+    
   end
 
   def update
+    if @recipe.update recipe_params
+      redirect_to @recipe
+    else
+      @categories = Category.where parent: nil
+      render 'new'
+    end
   end
 
   def destroy
@@ -40,7 +50,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :image)
+    params.require(:recipe).permit(:name, :description, :image, category_ids: [])
   end
 
   def authenticate_author

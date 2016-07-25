@@ -19,10 +19,29 @@ User.create! name: 'Svetlana',
              age: 24,
              password: 'password'
 
+puts 'Seed Category'
+5.times do
+  Category.create! name: Faker::Hipster.word
+end
+
+category_ids = Category.all.ids
+10.times do
+  Category.create! name: Faker::Hipster.word,
+                   parent_id: category_ids.sample
+end
+
+category_ids = Category.all.ids
+30.times do
+  Category.create! name: Faker::Hipster.word,
+                   parent_id: category_ids.sample
+end
+
 puts 'Seed Recipe'
+category_ids = Category.all.ids
 100.times do
   Recipe.create! name: Faker::Commerce.product_name,
                  description: Faker::Lorem.paragraphs(3, true).join("\r\n"),
                  image: File.new("#{Rails.root}/public/images/pizza.jpg"),
-                 user: User.all.sample
+                 user: User.all.sample,
+                 category_ids: category_ids.sample(Faker::Number.between(1, 4))
 end

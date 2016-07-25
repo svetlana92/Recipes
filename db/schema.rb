@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718133235) do
+ActiveRecord::Schema.define(version: 20160725112141) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_categorizations_on_category_id"
+    t.index ["recipe_id"], name: "index_categorizations_on_recipe_id"
+  end
 
   create_table "recipes", force: :cascade do |t|
     t.string   "name"

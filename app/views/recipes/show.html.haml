@@ -15,5 +15,9 @@
     .col-md-6
       = image_tag @recipe.image.url(:medium), class: 'img-responsive'
     .col-md-6
+      %h4
+        - @recipe.categories.each do |category|
+          = link_to category do
+            %span.label.label-success= category.name
       %h3 Description
       = @recipe.description
