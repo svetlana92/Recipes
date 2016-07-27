@@ -6,5 +6,9 @@
     .panel-body
       = link_to recipe do
         %h3= truncate(recipe.name, length: 16, separator: ' ')
+      %h5
+        - recipe.categories.each do |category|
+          = link_to category do
+            %span.label.label-primary= category.name
       %p
         = truncate(recipe.description, length: 100, separator: ' ')

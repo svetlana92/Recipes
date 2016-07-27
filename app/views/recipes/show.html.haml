@@ -18,6 +18,6 @@
       %h4
         - @recipe.categories.each do |category|
           = link_to category do
-            %span.label.label-success= category.name
+            %span.label.label-primary= category.name
       %h3 Description
       = @recipe.description

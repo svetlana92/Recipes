@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @recipes = Recipe.search(params[:search])
   end
 
   def show
@@ -28,7 +29,7 @@ class RecipesController < ApplicationController
 
   def edit
     @categories = Category.where parent: nil
-    
+
   end
 
   def update

@@ -1,10 +1,15 @@
 #recipes-index
   .row
-    .col-md-12
+    .col-md-6
       %h1 Recipes
       %p
         = link_to new_recipe_path, class: 'btn btn-primary' do
           %i.fa.fa-plus-circle
           New Recipe
+    .col-md-6.text-right
+      %h1
+        = form_tag recipes_path, method: 'get', class: 'form-inline' do
+          = text_field_tag :search, params[:search], class: 'form-control'
+          = submit_tag "Search", name: nil, class: 'btn btn-default'
   .row
     = render @recipes

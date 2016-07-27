@@ -11,4 +11,13 @@ class Recipe < ApplicationRecord
                     styles: { medium: "960x640>", thumb: "480x320#" },
                     default_url: "/images/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      where(nil)
+    end
+  end
+
 end
