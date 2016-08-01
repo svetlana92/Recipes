@@ -12,27 +12,18 @@
       = f.label :description, class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_area :description, class: 'form-control', rows: 5
-    #categories-group.form-group
-      = f.label :categories, 'Category', class: 'col-sm-2 control-label'
-      = f.hidden_field :category_ids, multiple: true
-      = render partial: 'categories/select',
-               locals: { parent_chain_with_siblings: @recipe.categories.first.parent_chain_with_siblings }
-
-    #categories-group-0.form-group
-      = f.label :categories, 'Category', class: 'col-sm-2 control-label'
-      = f.hidden_field :category_ids, multiple: true
-      = render partial: 'categories/select',
-               locals: { categories: @categories }
-    #categories-group-1.form-group
-      = f.label :categories, 'Second', class: 'col-sm-2 control-label'
-      = f.hidden_field :category_ids, multiple: true
-      = render partial: 'categories/select',
-               locals: { categories: @categories }
-    #categories-group-2.form-group
-      = f.label :categories, 'Third', class: 'col-sm-2 control-label'
-      = f.hidden_field :category_ids, multiple: true
-      = render partial: 'categories/select',
-               locals: { categories: @categories }
+    - 3.times do |index|
+      .form-group{ id: "categories-group-#{ index.to_s }" }
+        = f.label :categories, "Category #{ index + 1 }",
+                  class: 'col-sm-2 control-label'
+        = f.hidden_field :category_ids, multiple: true
+        - if @recipe.categories[index].present?
+          - category = @recipe.categories[index].parent_chain_with_siblings
+          = render partial: 'categories/select',
+                   locals: { parent_chain_with_siblings: category }
+        - else
+          = render partial: 'categories/select',
+                   locals: { categories: @categories }
     .form-group
       = f.label :image, class: 'col-sm-2 control-label'
       .col-sm-10

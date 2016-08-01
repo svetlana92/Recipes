@@ -4,8 +4,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_author, only: [:update, :edit]
 
   def index
-    @recipes = Recipe.all
-    @recipes = Recipe.search(params[:search])
+    @recipes = Recipe.includes(:categories).search(params[:search])
   end
 
   def show
