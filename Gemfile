@@ -62,3 +62,5 @@ gem 'font-awesome-rails'
 gem 'devise'
 
 gem 'letter_opener', group: :development
+
+gem 'pundit'

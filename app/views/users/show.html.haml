@@ -1,7 +1,10 @@
 #user-show
   %h2= @user.name
   .row
-    .col-md-6
+    .col-md-3
+      = image_tag @user.image.url(:thumb),
+                  class: 'img-responsive img-rounded img-thumbnail'
+    .col-md-3
       %p
         %strong
           Email:

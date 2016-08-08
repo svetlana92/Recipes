@@ -133,6 +133,8 @@ GEM
       mimemagic (~> 0.3.0)
     pkg-config (1.1.7)
     puma (3.4.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -225,6 +227,7 @@ DEPENDENCIES
   mysql2
   paperclip (~> 5.0.0)
   puma (~> 3.0)
+  pundit
   rails (~> 5.0.0)
   sass-rails (~> 5.0)
   spring
