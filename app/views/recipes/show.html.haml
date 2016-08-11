@@ -5,7 +5,7 @@
       %p
         %strong Author:
         %strong= link_to @recipe.user.name, user_path(@recipe.user)
-    - if current_user == @recipe.user
+    - if policy(@recipe).edit?
       .col-md-2.text-right
         %h1
           = link_to edit_recipe_path(@recipe), class: 'btn btn-primary' do
@@ -21,3 +21,12 @@
             %span.label.label-primary= category.name
       %h3 Description
       = @recipe.description
+  %hr
+  .container-fluid
+    %h4 Comments
+    - if policy(Comment).create?
+      = render 'comments/form'
+    - else
+      %p.lead.text-center You need to sign in to comment!
+    %hr
+    = render @recipe.comments

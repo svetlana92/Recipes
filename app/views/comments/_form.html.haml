@@ -1,0 +1,14 @@
+= form_for [@recipe, @recipe.comments.build],
+           html: { id: 'comments-form' } do |f|
+  .comment-body
+    .row
+      .col-md-3.text-right
+        %p.lead= current_user.name
+      .col-md-7
+        .form-group
+          = f.text_field :comment, class: 'form-control', placeholder: 'Your comment'
+      .col-md-2
+        .form-group
+          = f.button :submit, class: 'btn btn-primary btn-block' do
+            %i.fa.fa-comment
+            Comment

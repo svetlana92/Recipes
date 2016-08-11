@@ -1,0 +1,10 @@
+- unless comment.new_record?
+  .comment-body
+    .row
+      .col-md-3.text-right
+        %p.lead= comment.user.name
+      .col-md-9
+        %p
+          = comment.comment
+          %br
+          %span.text-muted= comment.created_at.strftime("%d.%m.%Y")

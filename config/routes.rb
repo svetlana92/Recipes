@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, except: [:new, :create]
 
-  resources :recipes
+  resources :recipes do
+    resources :comments
+  end
 
   resources :categories, only: [:show, :index]
 

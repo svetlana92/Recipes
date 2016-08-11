@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_recipe, except: [:index, :new, :create]
-  before_action :authenticate_author, only: [:update, :edit]
+  # before_action :authenticate_author, only: [:update, :edit]
 
   def index
     @recipes = Recipe.includes(:categories).search(params[:search])
@@ -28,7 +28,6 @@ class RecipesController < ApplicationController
 
   def edit
     @categories = Category.where parent: nil
-
   end
 
   def update
@@ -46,7 +45,8 @@ class RecipesController < ApplicationController
   private
 
   def set_recipe
-    @recipe = Recipe.find params[:id]
+    @recipe = Recipe.find(params[:id])
+    authorize(@recipe)
   end
 
   def recipe_params

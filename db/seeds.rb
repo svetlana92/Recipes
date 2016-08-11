@@ -11,7 +11,8 @@ puts 'Seed User'
   User.create! name: Faker::Name.name,
                email: Faker::Internet.email,
                age: Faker::Number.between(10, 80),
-               password: 'password'
+               password: 'password',
+               created_at: Faker::Date.between(20.days.ago, Date.today)
 end
 
 User.create! name: 'Svetlana',
@@ -21,27 +22,41 @@ User.create! name: 'Svetlana',
 
 puts 'Seed Category'
 5.times do
-  Category.create! name: Faker::Hipster.word
+  Category.create! name: Faker::Hipster.word,
+                   created_at: Faker::Date.between(20.days.ago, Date.today)
 end
 
 category_ids = Category.all.ids
 10.times do
   Category.create! name: Faker::Hipster.word,
-                   parent_id: category_ids.sample
+                   parent_id: category_ids.sample,
+                   created_at: Faker::Date.between(20.days.ago, Date.today)
 end
 
 category_ids = Category.all.ids
 30.times do
   Category.create! name: Faker::Hipster.word,
-                   parent_id: category_ids.sample
+                   parent_id: category_ids.sample,
+                   created_at: Faker::Date.between(20.days.ago, Date.today)
 end
 
 puts 'Seed Recipe'
 category_ids = Category.all.ids
 100.times do
+  user = User.all.sample
   Recipe.create! name: Faker::Commerce.product_name,
                  description: Faker::Lorem.paragraphs(3, true).join("\r\n"),
                  image: File.new("#{Rails.root}/public/images/pizza.jpg"),
-                 user: User.all.sample,
-                 category_ids: category_ids.sample(Faker::Number.between(1, 4))
+                 user: user,
+                 category_ids: category_ids.sample(Faker::Number.between(1, 3)),
+                 created_at: Faker::Date.between(user.created_at, Date.today)
+end
+
+puts 'Seed Comments'
+Recipe.all.each do |recipe|
+  rand(5..20).times do
+    recipe.comments.create! user: User.all.sample,
+                            comment: Faker::Lorem.sentences(rand(1..5)).join("\s"),
+                            created_at: Faker::Date.between(recipe.created_at, Date.today)
+  end
 end

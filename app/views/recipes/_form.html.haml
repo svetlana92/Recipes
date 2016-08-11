@@ -29,7 +29,6 @@
       .col-sm-10
         = f.file_field :image, class: 'form-control'
     .form-group
-      .col-sm-offset-1.col-sm-11
-        = f.button :submit, class: 'btn btn-primary' do
-          %i.fa.fa-floppy-o
-          Save
+      = f.button :submit, class: 'btn btn-primary' do
+        %i.fa.fa-floppy-o
+        Save

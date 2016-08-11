@@ -1,12 +1,10 @@
-class RecipePolicy
-  attr_reader :user, :recipe
-
-  def initialize(user, recipe)
-    @user = user
-    @recipe = recipe
-  end
-
+class RecipePolicy < ApplicationPolicy
   def update?
-    user.owner_of?(recipe)
+    user.present? && user.owner_of?(record)
   end
+
+  def edit?
+    update?
+  end
+
 end

@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :categorizations
   has_many :categories, through: :categorizations
+  has_many :comments
 
   validates :name, presence: true, length: { minimum: 6 }
   validates :user, presence: true
