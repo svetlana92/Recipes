@@ -20,6 +20,10 @@
           = link_to category do
             %span.label.label-primary= category.name
       %h3 Description
+      %dl.dl-horizontal
+        - @recipe.ingredients.each do |ingredient|
+          %dt= ingredient.quantity
+          %dd= ingredient.name
       = @recipe.description
   %hr
   .container-fluid

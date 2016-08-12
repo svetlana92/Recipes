@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811142554) do
+ActiveRecord::Schema.define(version: 20160812150150) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20160811142554) do
     t.integer  "user_id"
     t.index ["recipe_id"], name: "index_comments_on_recipe_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "quantity"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id", using: :btree
   end
 
   create_table "recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -75,5 +84,6 @@ ActiveRecord::Schema.define(version: 20160811142554) do
   add_foreign_key "categorizations", "recipes"
   add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
+  add_foreign_key "ingredients", "recipes"
   add_foreign_key "recipes", "users"
 end

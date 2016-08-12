@@ -9,6 +9,21 @@
       .col-sm-10
         = f.text_field :name, class: 'form-control'
     .form-group
+      = f.label :ingredients, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.fields_for :ingredients do |ingredients_form|
+          .row
+            .col-sm-4
+              = ingredients_form.text_field :quantity, class: 'form-control', placeholder: "Qunatity..."
+            .col-sm-4
+              = ingredients_form.text_field :name, class: 'form-control', placeholder: "Name..."
+            .col-sm-4
+              .checkbox
+                %label
+                  = ingredients_form.check_box :_destroy
+                  Delete
+
+    .form-group
       = f.label :description, class: 'col-sm-2 control-label'
       .col-sm-10
         = f.text_area :description, class: 'form-control', rows: 5

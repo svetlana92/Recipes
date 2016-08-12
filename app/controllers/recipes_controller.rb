@@ -13,6 +13,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @categories = Category.where parent: nil
+    2.times { @recipe.ingredients.build }
   end
 
   def create
@@ -50,7 +51,10 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :image, category_ids: [])
+    params.require(:recipe).permit(
+      :name, :description, :image,
+      category_ids: [],
+      ingredients_attributes: [:id, :name, :quantity, :_destroy])
   end
 
   def authenticate_author
