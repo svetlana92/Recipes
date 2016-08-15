@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812150150) do
+ActiveRecord::Schema.define(version: 20160815141205) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -41,11 +41,19 @@ ActiveRecord::Schema.define(version: 20160812150150) do
 
   create_table "ingredients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "quantity"
+    t.float    "quantity",   limit: 24
     t.integer  "recipe_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "measure_id"
+    t.index ["measure_id"], name: "index_ingredients_on_measure_id", using: :btree
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id", using: :btree
+  end
+
+  create_table "measures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id", using: :btree
   end
 
   create_table "recipes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -84,6 +92,7 @@ ActiveRecord::Schema.define(version: 20160812150150) do
   add_foreign_key "categorizations", "recipes"
   add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
+  add_foreign_key "ingredients", "measures"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "recipes", "users"
 end

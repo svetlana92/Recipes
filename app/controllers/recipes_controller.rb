@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_recipe, except: [:index, :new, :create]
-  # before_action :authenticate_author, only: [:update, :edit]
+  before_action :set_form_variables, exept: [:index, :show, :destroy]
 
   def index
     @recipes = Recipe.includes(:categories).search(params[:search])
@@ -11,9 +11,6 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
-    @categories = Category.where parent: nil
-    2.times { @recipe.ingredients.build }
   end
 
   def create
@@ -22,21 +19,18 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to @recipe
     else
-      @categories = Category.where parent: nil
       render 'new'
     end
   end
 
   def edit
-    @categories = Category.where parent: nil
   end
 
   def update
     if @recipe.update recipe_params
       redirect_to @recipe
     else
-      @categories = Category.where parent: nil
-      render 'new'
+      render 'edit'
     end
   end
 
@@ -54,7 +48,7 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(
       :name, :description, :image,
       category_ids: [],
-      ingredients_attributes: [:id, :name, :quantity, :_destroy])
+      ingredients_attributes: [:id, :name, :quantity, :measure_id, :_destroy])
   end
 
   def authenticate_author
@@ -62,5 +56,12 @@ class RecipesController < ApplicationController
       redirect_to recipes_path
       flash[:alert] = "Can't touch this, Ta-ra-ra-ra"
     end
+  end
+
+  def set_form_variables
+    @recipe = Recipe.new if @recipe.blank?
+    @measures = Measure.all
+    @categories = Category.where parent: nil
+    (2 - @recipe.ingredients.size).times { @recipe.ingredients.build }
   end
 end

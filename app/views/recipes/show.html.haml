@@ -22,7 +22,7 @@
       %h3 Description
       %dl.dl-horizontal
         - @recipe.ingredients.each do |ingredient|
-          %dt= ingredient.quantity
+          %dt= ingredient.humanized_quantity
           %dd= ingredient.name
       = @recipe.description
   %hr
