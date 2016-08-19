@@ -3,14 +3,13 @@ class Recipe < ApplicationRecord
   has_many :categorizations
   has_many :categories, through: :categorizations
   has_many :comments
-  has_many :ingredients, inverse_of: :recipe
+  has_many :ingredients, inverse_of: :recipe, autosave: true
 
   validates :name, presence: true, length: { minimum: 6, maximum: 100 }
   validates :description, presence: true, length: { minimum: 10, maximum: 500 }
   validates :user, presence: true
   validates :image, presence: true
   validates :categories, presence: true, length: { minimum: 1, maximum: 3 }
-  # validates :ingredients, length: { minimum: 2 }
 
   has_attached_file :image,
                     styles: { medium: "960x640>", thumb: "480x320#" },
@@ -19,7 +18,7 @@ class Recipe < ApplicationRecord
 
   accepts_nested_attributes_for :ingredients,
                                 allow_destroy: true,
-                                reject_if: lambda { |attributes| attributes['name'].blank? }
+                                reject_if: lambda { |attributes| attributes['product_id'].blank? && attributes['new_name'].blank? }
 
 
   def self.search(search)

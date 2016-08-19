@@ -1,4 +1,4 @@
-#users-index
+#users-index.container
   .row
     .col-md-12
       %h1.text-center Users
@@ -18,4 +18,4 @@
             %tr
               %td= link_to user.name, user
               %td= user.age
-              %td.text-right= user.created_at.strftime("%d/%m/%Y")
+              %td.text-right= user.created_at.strftime("%d.%m.%Y")

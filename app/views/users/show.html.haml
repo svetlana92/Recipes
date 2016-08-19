@@ -1,27 +1,29 @@
-#user-show
+#user-show.container
   %h2= @user.name
-  .row
-    .col-md-3
-      = image_tag @user.image.url(:thumb),
-                  class: 'img-responsive img-rounded img-thumbnail'
-    .col-md-3
-      %p
-        %strong
-          Email:
-        = @user.email
-      %p
-        %strong
-          Age:
-        = @user.age
-    .col-md-6.text-right
-      - if policy(@user).edit?
-        = link_to edit_user_path(@user), class: 'btn btn-primary' do
-          %i.fa.fa-pencil-square-o
-          Edit profile
-        = link_to edit_user_registration_path, class: 'btn btn-primary' do
-          %i.fa.fa-cogs
-          Change your email & password
-  .row
-    %h3
-      User's recipes:
-    = render @user.recipes
+  .container
+    .row
+      .col-md-3
+        = image_tag @user.image.url(:thumb),
+                    class: 'img-responsive img-rounded img-thumbnail'
+      .col-md-3
+        %p
+          %strong
+            Email:
+          = @user.email
+        %p
+          %strong
+            Age:
+          = @user.age
+      .col-md-5.text-right
+        - if policy(@user).edit?
+          = link_to edit_user_path(@user), class: 'btn btn-primary' do
+            %i.fa.fa-pencil-square-o
+            Edit profile
+          = link_to edit_user_registration_path, class: 'btn btn-primary' do
+            %i.fa.fa-cogs
+            Change your email & password
+    .row
+      .col-md-12
+        %h3
+          User's recipes:
+        = render @user.recipes

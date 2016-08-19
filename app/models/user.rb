@@ -18,4 +18,13 @@ class User < ApplicationRecord
     fail ArgumentError.new('You must pass a recipe.') unless recipe.kind_of? Recipe
     recipes.include?(recipe)
   end
+
+  def self.most_active
+    unscoped.
+    select("users.*, count(recipes.id) AS recipes_count").
+    joins(:recipes).
+    group("users.id").
+    order("recipes_count DESC")
+  end
+
 end

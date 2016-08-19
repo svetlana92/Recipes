@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts 'Seed User'
+puts 'Seeding Users'
 20.times do
   User.create! name: Faker::Name.name,
                email: Faker::Internet.email,
@@ -20,7 +20,7 @@ User.create! name: 'Svetlana',
              age: 24,
              password: 'password'
 
-puts 'Seed Category'
+puts 'Seeding Categories'
 5.times do
   Category.create! name: Faker::Hipster.word,
                    created_at: Faker::Date.between(20.days.ago, Date.today)
@@ -40,13 +40,16 @@ category_ids = Category.all.ids
                    created_at: Faker::Date.between(20.days.ago, Date.today)
 end
 
-puts 'Seed Measures'
+puts 'Seeding Measures'
 measure_names = %w(ml liter gram kg tbsp tsp cup item)
 Measure.create!(measure_names.map{ |measure_name| { name: measure_name } })
 
+puts 'Seeding Products'
+500.times do
+  Product.create! name: Faker::Beer.name
+end
 
-
-puts 'Seed Recipe'
+puts 'Seeding Recipes'
 category_ids = Category.all.ids
 100.times do
   user = User.all.sample
@@ -56,15 +59,19 @@ category_ids = Category.all.ids
     image: File.new("#{Rails.root}/public/images/pizza.jpg"),
     user: user,
     category_ids: category_ids.sample(Faker::Number.between(1, 3)),
-    created_at: Faker::Date.between(user.created_at, Date.today),
-    ingredients_attributes: 3.times.map do
-      {
-        name: Faker::Beer.name,
-        quantity: Faker::Number.between(1, 50),
-        measure: Measure.all.sample
-      }
-    end
+    created_at: Faker::Date.between(user.created_at, Date.today)
   })
+end
+
+puts 'Seeding Ingredients'
+Recipe.all.each do |recipe|
+  products = Product.all.sample(5)
+  rand(3..5).times.each_with_index do |x, i|
+    recipe.ingredients.create! product: products[i],
+                              quantity: Faker::Number.between(1, 50),
+                              measure: Measure.all.sample,
+                              created_at: recipe.created_at
+  end
 end
 
 puts 'Seed Comments'

@@ -28,4 +28,11 @@ class Category < ApplicationRecord
     end
     result
   end
+
+  def self.popular
+    select("categories.*, count(recipes.id) AS recipes_count").
+    joins(:recipes).
+    group("categories.id").
+    order("recipes_count DESC")
+  end
 end

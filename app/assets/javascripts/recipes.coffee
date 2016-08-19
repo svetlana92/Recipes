@@ -27,6 +27,7 @@ recipesForm =
   addIngredient: ->
     $(document).on 'click', '#recipes-form #add-ingredient', ->
       prevIngredient = $(this).siblings('div').last()
+      prevIngredient.find('select.select2').select2('destroy')
       newIngredient = prevIngredient.clone()
       prevId = prevIngredient.find('div').first().find('input').attr('id').substring(30,31)
       newId = parseInt(prevId) + 1
@@ -41,9 +42,29 @@ recipesForm =
           $(input).attr('id', id)
 
       newIngredient.insertAfter(prevIngredient)
+      recipesForm.initializeSelect2()
       false
+
+  initializeSelect2: ->
+    $( '#recipes-form .select2' ).select2({
+      theme: 'bootstrap'
+      tags: true,
+      createTag: (params) ->
+        {
+          id: params.term,
+          text: params.term,
+          newOption: true
+        }
+    })
+    return
+    
+  loadSelect2: ->
+    $(document).on 'turbolinks:load', ->
+      recipesForm.initializeSelect2()
+
 $ ->
   recipesForm.getCategories('#categories-group-0')
   recipesForm.getCategories('#categories-group-1')
   recipesForm.getCategories('#categories-group-2')
   recipesForm.addIngredient()
+  recipesForm.loadSelect2()

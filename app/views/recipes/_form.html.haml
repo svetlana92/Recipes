@@ -6,7 +6,7 @@
           %li= msg
     .form-group
       = f.label :name, class: 'col-sm-2 control-label'
-      .col-sm-10
+      .col-sm-9
         = f.text_field :name, class: 'form-control'
     .form-group
       = f.label :ingredients, class: 'col-sm-2 control-label'
@@ -27,9 +27,12 @@
                                                    { include_blank: 'Select one...' },
                                                    { class: 'form-control' }
             .col-sm-4
-              = ingredients_form.text_field :name,
-                                            class: 'form-control',
-                                            placeholder: "Name..."
+              = ingredients_form.collection_select :product_id,
+                                                   @products,
+                                                   :id,
+                                                   :name,
+                                                   { include_blank: 'Select one...' },
+                                                   { class: 'form-control select2' }
             .col-sm-4
               .checkbox
                 %label
@@ -41,7 +44,7 @@
 
     .form-group
       = f.label :description, class: 'col-sm-2 control-label'
-      .col-sm-10
+      .col-sm-9
         = f.text_area :description, class: 'form-control', rows: 5
     - 3.times do |index|
       .form-group{ id: "categories-group-#{ index.to_s }" }
@@ -57,9 +60,10 @@
                    locals: { categories: @categories }
     .form-group
       = f.label :image, class: 'col-sm-2 control-label'
-      .col-sm-10
+      .col-sm-9
         = f.file_field :image, class: 'form-control'
     .form-group
-      = f.button :submit, class: 'btn btn-primary' do
-        %i.fa.fa-floppy-o
-        Save
+      .col-sm-10
+        = f.button :submit, class: 'btn btn-primary' do
+          %i.fa.fa-floppy-o
+          Save
