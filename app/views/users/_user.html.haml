@@ -1,0 +1,13 @@
+.col-md-2.user-partial
+  .panel.panel-default
+    .panel-header
+      = link_to user do
+        = image_tag user.image.url(:thumb), class: 'img-responsive'
+    .panel-body
+      .row
+        .col-xs-12
+          = link_to user do
+            = truncate(user.name, length: 16, separator: ' ')
+      .row
+        .col-xs-4= user.recipes.size
+        .col-xs-8.text-right= user.created_at.strftime("%d.%m.%Y")

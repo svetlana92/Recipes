@@ -66,3 +66,5 @@ gem 'letter_opener', group: :development
 gem 'pundit'
 
 gem 'select2-rails'
+
+gem 'compass-rails'

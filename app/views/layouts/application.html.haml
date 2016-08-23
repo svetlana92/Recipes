@@ -7,7 +7,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .navbar.navbar-default.navbar-fixed-top
+    %nav.navbar.navbar-default.navbar-fixed-top
       .container
         .navbar-header
           = link_to root_path, class: 'navbar-brand' do
@@ -32,20 +32,19 @@
       %p.alert.alert-success= notice
     - if alert.present?
       %p.alert.alert-danger= alert
-    = yield
+    %main
+      = yield
 
-  .footer
+  %footer
     .container
       .row
         .col-md-2.text-center
           = link_to root_path do
             = image_tag image_path("logo.jpg")
-        .col-md-5
-          %ul.nav.nav-pills.nav-stacked.text-center
+        .col-md-10
+          %ul#nav-bottom.nav.nav-pills.pull-right
             %li= link_to 'Recipes', recipes_path
             %li= link_to 'Users', users_path
-        .col-md-5
-          %ul.nav.nav-pills.nav-stacked.text-center
             - if user_signed_in?
               %li= link_to 'My profile', current_user
               %li= link_to 'Sign out', destroy_user_session_path, method: 'delete'
