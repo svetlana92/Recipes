@@ -8,92 +8,110 @@ class PdfFiller
     name: "1161.pdf",
     field_options: [
       {
-        first_name: { x: 503, y: 194, width: 225, height: 15 },
-        last_name: { x: 353, y: 194, width: 225, height: 15 },
-        city: { x: 460, y: 220, width: 225, height: 15 },
-        street_number: { x: 310, y: 220, width: 125, height: 15 },
-        street: { x: 283, y: 220, width: 225, height: 15 },
-        year: { x: 451, y: 148, width: 225, height: 15, character_spacing: 8 },
-        date_of_birth: { x: 634, y: 194, width: 225, height: 15, character_spacing: 4 },
-        user_id: { x: 219, y: 194, width: 225, height: 15, character_spacing: 4 },
-        zip_code: { x: 526, y: 220, width: 225, height: 15, character_spacing: 4 },
-        phone_number: { x: 606, y: 220, width: 225, height: 15 },
-        phone_code: { x: 666, y: 220, width: 225, height: 15 },
-        male: { x: 184, y: 255, width: 225, height: 15 },
-        female: { x: 222, y: 255, width: 225, height: 15 },
-        single: { x: 276, y: 255, width: 225, height: 15 },
-        married: { x: 335, y: 255, width: 225, height: 15 },
-        divorced: { x: 399, y: 255, width: 225, height: 15 },
-        widower: { x: 459, y: 255, width: 225, height: 15 },
-        israeli_citizen_yes: { x: 522, y: 255, width: 225, height: 15 },
-        israeli_citizen_no: { x: 562, y: 255, width: 225, height: 15 },
-        child_mark_1: { x: 174, y: 390, width: 225, height: 15 },
-        child_name_1: { x: 215, y: 390, width: 225, height: 15 },
-        child_id_1: { x: 302, y: 390, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_1: { x: 387, y: 390, width: 225, height: 15, character_spacing: 4},
-        child_mark_2: { x: 174, y: 410, width: 225, height: 15 },
-        child_name_2: { x: 215, y: 410, width: 225, height: 15 },
-        child_id_2: { x: 302, y: 410, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_2: { x: 387, y: 410, width: 225, height: 15, character_spacing: 4},
-        child_mark_3: { x: 174, y: 430, width: 225, height: 15 },
-        child_name_3: { x: 215, y: 430, width: 225, height: 15 },
-        child_id_3: { x: 302, y: 430, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_3: { x: 387, y: 430, width: 225, height: 15, character_spacing: 4},
-        child_mark_4: { x: 174, y: 450, width: 225, height: 15 },
-        child_name_4: { x: 215, y: 450, width: 225, height: 15 },
-        child_id_4: { x: 302, y: 450, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_4: { x: 387, y: 450, width: 225, height: 15, character_spacing: 4},
-        child_mark_5: { x: 174, y: 470, width: 225, height: 15 },
-        child_name_5: { x: 215, y: 470, width: 225, height: 15 },
-        child_id_5: { x: 302, y: 470, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_5: { x: 387, y: 470, width: 225, height: 15, character_spacing: 4},
-        child_mark_6: { x: 433, y: 390, width: 225, height: 15 },
-        child_name_6: { x: 473, y: 390, width: 225, height: 15 },
-        child_id_6: { x: 560, y: 390, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_6: { x: 645, y: 390, width: 225, height: 15, character_spacing: 4},
-        child_mark_7: { x: 433, y: 410, width: 225, height: 15 },
-        child_name_7: { x: 473, y: 410, width: 225, height: 15 },
-        child_id_7: { x: 560, y: 410, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_7: { x: 645, y: 410, width: 225, height: 15, character_spacing: 4},
-        child_mark_8: { x: 433, y: 430, width: 225, height: 15 },
-        child_name_8: { x: 473, y: 430, width: 225, height: 15 },
-        child_id_8: { x: 560, y: 430, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_8: { x: 645, y: 430, width: 225, height: 15, character_spacing: 4},
-        child_mark_9: { x: 433, y: 450, width: 225, height: 15 },
-        child_name_9: { x: 473, y: 450, width: 225, height: 15 },
-        child_id_9: { x: 560, y: 450, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_9: { x: 645, y: 450, width: 225, height: 15, character_spacing: 4},
-        child_mark_10: { x: 433, y: 470, width: 225, height: 15 },
-        child_name_10: { x: 473, y: 470, width: 225, height: 15 },
-        child_id_10: { x: 560, y: 470, width: 225, height: 15, character_spacing: 4},
-        child_date_of_birth_10: { x: 645, y: 470, width: 225, height: 15, character_spacing: 4},
-        type_of_income_1: { x: 200, y: 572, width: 225, height: 15 },
-        employer_name_1: { x: 281, y: 572, width: 225, height: 15 },
-        file_number_1: { x: 370, y: 572, width: 225, height: 15 },
-        type_of_income_2: { x: 200, y: 592, width: 225, height: 15 },
-        employer_name_2: { x: 281, y: 592, width: 225, height: 15 },
-        file_number_2: { x: 370, y: 592, width: 225, height: 15 },
-        type_of_income_3: { x: 200, y: 612, width: 225, height: 15 },
-        employer_name_3: { x: 281, y: 612, width: 225, height: 15 },
-        file_number_3: { x: 370, y: 612, width: 225, height: 15 },
-        type_of_income_4: { x: 200, y: 632, width: 225, height: 15 },
-        employer_name_4: { x: 281, y: 632, width: 225, height: 15 },
-        file_number_4: { x: 370, y: 632, width: 225, height: 15 },
-        type_of_income_5: { x: 200, y: 652, width: 225, height: 15 },
-        employer_name_5: { x: 281, y: 652, width: 225, height: 15 },
-        file_number_5: { x: 370, y: 652, width: 225, height: 15 },
-        type_of_income_6: { x: 200, y: 672, width: 225, height: 15 },
-        employer_name_6: { x: 281, y: 672, width: 225, height: 15 },
-        file_number_6: { x: 370, y: 672, width: 225, height: 15 },
+        year: { x: 372, y: 147, width: 65, height: 13, character_spacing: 9 },
+
+        user_id: { x: 157, y: 194, width: 100, height: 13, character_spacing: 4 },
+        last_name: { x: 319, y: 194, width: 159, height: 13 },
+        first_name: { x: 478, y: 194, width: 159, height: 13 },
+        date_of_birth: { x: 567, y: 194, width: 90, height: 13, character_spacing: 4 },
+
+        street: { x: 283, y: 221, width: 225, height: 13 },
+        street_number: { x: 314, y: 221, width: 30, height: 13 },
+        city: { x: 387, y: 221, width: 72, height: 13 },
+        zip_code: { x: 442, y: 221, width: 55, height: 13, character_spacing: 4 },
+        phone_number: { x: 530, y: 221, width: 85, height: 13 },
+        phone_code: { x: 568, y: 221, width: 30, height: 13 },
+
+        male: { x: 77, y: 253, width: 11, height: 13, size: 9 },
+        female: { x: 116, y: 253, width: 11, height: 13, size: 9 },
+        single: { x: 170, y: 253, width: 11, height: 13, size: 9 },
+        married: { x: 229, y: 253, width: 11, height: 13, size: 9 },
+        divorced: { x: 293, y: 253, width: 11, height: 13, size: 9 },
+        widower: { x: 353, y: 253, width: 11, height: 13, size: 9 },
+        israeli_citizen_yes: { x: 416, y: 254, width: 11, height: 13, size: 9 },
+        israeli_citizen_no: { x: 456, y: 254, width: 11, height: 13, size: 9 },
+
+        child_mark_1: { x: 67, y: 390, width: 11, height: 13 },
+        child_name_1: { x: 140, y: 390, width: 72, height: 13 },
+        child_id_1: { x: 238, y: 390, width: 97, height: 13, character_spacing: 4 },
+        child_date_of_birth_1: { x: 308, y: 390, width: 67, height: 13, character_spacing: 4 },
+
+        child_mark_2: { x: 67, y: 410, width: 11, height: 13 },
+        child_name_2: { x: 140, y: 410, width: 72, height: 13 },
+        child_id_2: { x: 238, y: 410, width: 97, height: 13, character_spacing: 4 },
+        child_date_of_birth_2: { x: 308, y: 410, width: 67, height: 13, character_spacing: 4 },
+
+        child_mark_3: { x: 67, y: 430, width: 11, height: 13 },
+        child_name_3: { x: 140, y: 430, width: 72, height: 13 },
+        child_id_3: { x: 238, y: 430, width: 97, height: 13, character_spacing: 4 },
+        child_date_of_birth_3: { x: 308, y: 430, width: 67, height: 13, character_spacing: 4 },
+
+        child_mark_4: { x: 67, y: 450, width: 11, height: 13 },
+        child_name_4: { x: 140, y: 450, width: 72, height: 13 },
+        child_id_4: { x: 238, y: 450, width: 97, height: 13, character_spacing: 4 },
+        child_date_of_birth_4: { x: 308, y: 450, width: 67, height: 13, character_spacing: 4 },
+
+        child_mark_5: { x: 67, y: 470, width: 11, height: 13 },
+        child_name_5: { x: 140, y: 470, width: 72, height: 13 },
+        child_id_5: { x: 238, y: 470, width: 97, height: 13, character_spacing: 4 },
+        child_date_of_birth_5: { x: 308, y: 470, width: 67, height: 13, character_spacing: 4 },
+
+        child_mark_6: { x: 326, y: 390, width: 11, height: 13 },
+        child_name_6: { x: 398, y: 390, width: 72, height: 13 },
+        child_id_6: { x: 497, y: 390, width: 98, height: 13, character_spacing: 4 },
+        child_date_of_birth_6: { x: 566, y: 390, width: 67, height: 13, character_spacing: 4 },
+
+        child_mark_7: { x: 326, y: 410, width: 11, height: 13 },
+        child_name_7: { x: 398, y: 410, width: 72, height: 13 },
+        child_id_7: { x: 497, y: 410, width: 98, height: 13, character_spacing: 4 },
+        child_date_of_birth_7: { x: 566, y: 410, width: 67, height: 13, character_spacing: 4 },
+
+        child_mark_8: { x: 326, y: 430, width: 11, height: 13 },
+        child_name_8: { x: 398, y: 430, width: 72, height: 13 },
+        child_id_8: { x: 497, y: 430, width: 98, height: 13, character_spacing: 4 },
+        child_date_of_birth_8: { x: 566, y: 430, width: 67, height: 13, character_spacing: 4 },
+
+        child_mark_9: { x: 326, y: 450, width: 11, height: 13 },
+        child_name_9: { x: 398, y: 450, width: 72, height: 13 },
+        child_id_9: { x: 497, y: 450, width: 98, height: 13, character_spacing: 4 },
+        child_date_of_birth_9: { x: 566, y: 450, width: 67, height: 13, character_spacing: 4 },
+
+        child_mark_10: { x: 326, y: 470, width: 11, height: 13 },
+        child_name_10: { x: 398, y: 470, width: 72, height: 13 },
+        child_id_10: { x: 497, y: 470, width: 98, height: 13, character_spacing: 4 },
+        child_date_of_birth_10: { x: 566, y: 470, width: 67, height: 13, character_spacing: 4 },
+
+        type_of_income_1: { x: 114, y: 571, width: 55, height: 13 },
+        employer_name_1: { x: 221, y: 571, width: 107, height: 13 },
+        file_number_1: { x: 290, y: 571, width: 69, height: 13 },
+
+        type_of_income_2: { x: 114, y: 591, width: 55, height: 13 },
+        employer_name_2: { x: 221, y: 591, width: 107, height: 13 },
+        file_number_2: { x: 290, y: 591, width: 69, height: 13 },
+
+        type_of_income_3: { x: 114, y: 611, width: 55, height: 13 },
+        employer_name_3: { x: 221, y: 611, width: 107, height: 13 },
+        file_number_3: { x: 290, y: 611, width: 69, height: 13 },
+
+        type_of_income_4: { x: 114, y: 631, width: 55, height: 13 },
+        employer_name_4: { x: 221, y: 631, width: 107, height: 13 },
+        file_number_4: { x: 290, y: 631, width: 69, height: 13 },
+
+        type_of_income_5: { x: 114, y: 651, width: 55, height: 13 },
+        employer_name_5: { x: 221, y: 651, width: 107, height: 13 },
+        file_number_5: { x: 290, y: 651, width: 69, height: 13 },
+
+        type_of_income_6: { x: 114, y: 670, width: 55, height: 13 },
+        employer_name_6: { x: 221, y: 670, width: 107, height: 13 },
+        file_number_6: { x: 290, y: 670, width: 69, height: 13 },
       },
       {
-        amount_of_donations: { x: 408, y: 200, width: 225, height: 15 },
-        always_check: { x: 148, y: 200, width: 225, height: 15 },
-        date: { x: 242, y: 817, width: 225, height: 15 },
+        amount_of_donations: { x: 331, y: 199, width: 69, height: 13 },
+        always_check: { x: 41, y: 198, width: 11, height: 13 },
+        date: { x: 175, y: 816, width: 87, height: 13 },
       }
     ]
   }
-  OUTPUT = "New.pdf"
 
   def self.fill(pages = [])
     keys_match = pages.map(&:keys) == TEMPLATE[:field_options].map(&:keys)
@@ -122,7 +140,12 @@ class PdfFiller
     template.pages.each_with_index do |page, index|
       page << pdf.pages[index]
     end
-    template.save OUTPUT
+    
+    file = StringIO.new(template.to_pdf)
+    file.class.class_eval { attr_accessor :original_filename, :content_type }
+    file.original_filename = "Latest Tax Refund"
+    file.content_type = "application/pdf"
+    file
   end
 
   private
@@ -134,6 +157,8 @@ class PdfFiller
   def self.fill_text(pdf, text, options = {})
     options[:at] = top_right_coordinates(options.delete(:x), options.delete(:y))
     options[:align] = :center
+    options[:valign] = :center
+    options[:overflow] = :shrink_to_fit
     pdf.text_box text, options.merge(overflow: :shrink_to_fit, disable_wrap_by_char: false)
   end
 end

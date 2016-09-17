@@ -70,7 +70,6 @@ gem 'select2-rails'
 gem 'compass-rails'
 
 gem 'prawn'
-
-gem 'pdf-toolkit'
+  gem 'prawn-table'
 
 gem 'combine_pdf'
