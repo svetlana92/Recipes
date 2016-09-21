@@ -73,3 +73,5 @@ gem 'prawn'
   gem 'prawn-table'
 
 gem 'combine_pdf'
+
+gem 'rest-client'

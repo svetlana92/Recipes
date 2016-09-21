@@ -19,8 +19,8 @@ class CoverPageFiller
       pdf.image "#{Rails.root}/public/images/jgive_logo_color.png", width: 150, position: :center
       pdf.bounding_box [pdf.bounds.left, pdf.bounds.bottom + 40], width: pdf.bounds.width, position: :center do
         pdf.move_down(5)
-        pdf.text %q(‫בק‬‫שה‬ ‫זו‬ ‫הוגשה‬ ‫ע"י‬ ‫הנישום‪,‬‬ ‫בצור‬‫ה‬ ‫ממוחשבת‬ ‫בה‬‫תאם‬ ‫ל‬‫ח‬‫וק‬ ‫חוק‬ ‫חתימה‬ ‫אל‬‫קטרונית‪,‬‬ ‫תשס"א­‬-) +
-                 %q(2001).reverse, size: 10, align: :center
+        pdf.text %q(2001) +
+                 %q(‫בקשה‪ ‬זו‪ ‬הוגשה‪ ‬ע"י‪ ‬הנישום‪ ,‬בצורה‪ ‬ממוחשבת‪ ‬בהתאם‪ ‬לחוק‪ ‬חוק‪ ‬חתימה‪ ‬אלקטרונית‪ ,‬תשס"א­‬), size: 10, align: :center
         pdf.text %q[‫באמצעות‪ ‬אתר‪ JGIVE.CO.IL ‬המופעל‪ ‬ע"י‪ ‬קרן‪ ‬עשור‪) ‬ע"ר(‬], size: 10, align: :center
       end
     end
@@ -30,8 +30,9 @@ class CoverPageFiller
 
       pdf.text %q(בס"ד), indent_paragraphs: 16
 
-      pdf.text %q(א' בתמוז, תשע"ו), align: :left
-      pdf.text "7 June 2016", align: :left, direction: :ltr
+      pdf.text DateConverter.gregorian_to_hebrew, align: :left
+      pdf.move_down(2)
+      pdf.text options[:current_date], align: :left, direction: :ltr
 
       pdf.move_down(20)
       pdf.text %q(לכבוד), indent_paragraphs: 16
@@ -115,6 +116,11 @@ class CoverPageFiller
       pdf.table(list_data,
                 width: 525,
                 cell_style: { border_width: 0, inline_format: true })
+
+      pdf.move_down(30)
+      pdf.text %q(‫חותמת מקורית של‬) +
+               %q(JGIVE).reverse +
+               %q(‫על קבילות המסמך‬), indent_paragraphs: 16
     end
 
     pdf.bounding_box [pdf.bounds.left, pdf.bounds.bottom + 14], width: pdf.bounds.width, position: :center do
@@ -125,77 +131,104 @@ class CoverPageFiller
     pdf.render_file "assignment.pdf"
     true
   end
-
-  # CoverPageFiller.generate_file({
-  #     name: 'Gosho Goshev',
-  #     current_date: "21.08.2016",
-  #     taxpayer_id: '123456789',
-  #     tax_year: '2016',
-  #     company_name: 'Something',
-  #     company_number: '123456789',
-  #     company_deductions: '325153153',
-  #     address: 'dsjhfdjs jkfds jkf',
-  #     number_of_applications: '2',
-  #
-  #     payments: [
-  #       {
-  #         amount: '2112',
-  #         date: '21.05.2016',
-  #         invoice_number: '950001',
-  #         charity_number: '2315156151',
-  #         charity_name: 'sdsad'
-  #       },
-  #       {
-  #         amount: '2112',
-  #         date: '21.05.2016',
-  #         invoice_number: '950001',
-  #         charity_number: '2315156151',
-  #         charity_name: 'sdsad'
-  #       },
-  #       {
-  #         amount: '2112',
-  #         date: '21.05.2016',
-  #         invoice_number: '950001',
-  #         charity_number: '2315156151',
-  #         charity_name: 'sdsad'
-  #       },
-  #       {
-  #         amount: '2112',
-  #         date: '21.05.2016',
-  #         invoice_number: '950001',
-  #         charity_number: '2315156151',
-  #         charity_name: 'sdsad'
-  #       },
-  #       {
-  #         amount: '2112',
-  #         date: '21.05.2016',
-  #         invoice_number: '950001',
-  #         charity_number: '2315156151',
-  #         charity_name: 'sdsad'
-  #       },
-  #       {
-  #         amount: '2112',
-  #         date: '21.05.2016',
-  #         invoice_number: '950001',
-  #         charity_number: '2315156151',
-  #         charity_name: 'sdsad'
-  #       },
-  #       {
-  #         amount: '2112',
-  #         date: '21.05.2016',
-  #         invoice_number: '950001',
-  #         charity_number: '2315156151',
-  #         charity_name: 'sdsad'
-  #       },
-  #       {
-  #         amount: '2112',
-  #         date: '21.05.2016',
-  #         invoice_number: '950001',
-  #         charity_number: '2315156151',
-  #         charity_name: 'sdsad'
-  #       },
-  #     ]
-  # })
-
-
 end
+
+# CoverPageFiller.generate_file({
+#     name: 'Gosho Goshev',
+#     current_date: "21.08.2016",
+#     taxpayer_id: '123456789',
+#     tax_year: '2016',
+#     company_name: 'Something',
+#     company_number: '123456789',
+#     company_deductions: '325153153',
+#     address: 'dsjhfdjs jkfds jkf',
+#     number_of_applications: '2',
+#     total_donations: '546',
+#
+#     payments: [
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#       {
+#         amount: '2112',
+#         date: '21.05.2016',
+#         invoice_number: '950001',
+#         charity_number: '2315156151',
+#         charity_name: 'sdsad'
+#       },
+#     ]
+# })
